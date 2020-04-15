@@ -9,20 +9,14 @@ $dbuser = "root";
 //пароль пользователя
 $dbpasswd = "";
 //соединение с базой данных
-$dbcnx = @mysqli_connect($dblocation, $dbuser, $dbpasswd);
+$mysqli = new mysqli($dblocation, $dbuser, $dbpasswd, $dbname);
 
-if (!$dbcnx) {
-    exit ("<p>Сервер не доступен</p>");
-}
-else {
-    echo "<p>Сервер подключён</p>";
+if ($mysqli->connect_error) {
+    die('Ошибка подключения ('. $mysqli->conect_errno .') '. $mysqli->connect_error);
 }
 
-if (!@mysqli_select_db($dbname, $dbcnx)) {
-    exit ("<p> База данных не доступна </p>");
-}
-else {
-    echo "<p> База данных подключена </p>";
-}
+echo 'соединение установлено... '. $mysqli->host_info ."\n";
+
+$mysqli->close();
 
 ?>
