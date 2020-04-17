@@ -3,7 +3,7 @@
 //адрес сервера
 $dblocation = "localhost";
 //имя базы данных
-$dbname = "test";
+$dbname = "my_mysql";
 //имя пользователя
 $dbuser = "root";
 //пароль пользователя
@@ -15,7 +15,7 @@ if ($mysqli->connect_error) {
     die('Ошибка подключения ('. $mysqli->conect_errno .') '. $mysqli->connect_error);
 }
 
-echo 'соединение установлено... '. $mysqli->host_info ."\n";
+//echo 'соединение установлено... '. $mysqli->host_info ."\n";
 
 $mysqli->close();
 
