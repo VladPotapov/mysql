@@ -1,14 +1,12 @@
 <?php
 
-require_once ("db.php");
-//require_once("functions.php");
-$result = mysqli_query($link, "SHOW DATABASES");
-while($forum_programmists = mysqli_fetch_assoc($result)) {
-    print_r($forum_programmists);
-    echo "<br>";
-    echo "<br>";
-}
-echo "<br>";
+require_once("db.php");
+
+//mysql запросы
+//базы данных
+$show_databases = mysqli_query($link, "SHOW DATABASES");
+
+//
 
 ?>
 <!DOCTYPE html>
@@ -19,6 +17,12 @@ echo "<br>";
     <title>Document</title>
 </head>
 <body>
-    <!--<p><?php echo $forums['id_forum']; ?></p>-->
+    <?php
+        while($databases = mysqli_fetch_assoc($show_databases)) {
+            print_r($databases);
+            echo "<br>";
+            echo "<br>";
+        }
+    ?>
 </body>
 </html>
