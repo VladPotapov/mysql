@@ -1,16 +1,17 @@
 <?php
 
-
-function get_forums($mysql) {
-    $sql = "SELECT * FROM forums";
-    $result = @mysqli_query($mysql, $sql);
-
-    $forums = @mysqli_fetch_all($result);
-
-    return $forums;
+//узнать имена существующих бд
+function show_databases($link, $sql) {
+    return mysqli_query($link, $sql);
 }
 
-$forums = get_forums($mysql);
+//узнать таблицы бд
+function show_tables($link, $tab, $sql)  {
+    return mysqli_query($link, $sql);
+}
 
-
+//показать структуру таблицы
+function show_describe($link, $sql) {
+    return mysqli_query($link, $sql);
+}
 ?>
