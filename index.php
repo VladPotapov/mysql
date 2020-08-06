@@ -5,12 +5,11 @@ require_once("functions.php");
 
 //mysql запросы
 //базы данных
-//$show_databases = mysqli_query($link, "SHOW DATABASES");
+$request_one = mysqli_query($link, "SHOW DATABASES");
 $table = "my_mysql";
-$show = show_databases($link, "SHOW DATABASES");
-$show_tab = show_tables($link, $table, "SHOW TABLES FROM $table");
+$show = request_one($link, "SHOW DATABASES");
+$show_tab = request_two($link, $table, "SHOW TABLES FROM $table");
 //
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,25 +19,23 @@ $show_tab = show_tables($link, $table, "SHOW TABLES FROM $table");
     <title>Document</title>
 </head>
 <body>
+    <h2>запросы mysql</h2>
+    <form action="functions.php" method="post">
+        <button>базы данных</button>
+    </form>
     <?php
-        /*while($databases = mysqli_fetch_assoc($show_databases)) {
-            print_r($databases);
-            echo "<br>";
-            echo "<br>";
-        }*/
-        echo "<h3>имена существующих бд</h3>";
-        while($databases = mysqli_fetch_assoc($show)) {
-            print_r($databases);
+        while($show_view = mysqli_fetch_assoc($show)) {
+            print_r($show_view);
             echo "<br>";
             echo "<br>";
         }
-        echo "<br>";
-        echo "<h3>имена существующих бд</h3>";
-        while($tables = mysqli_fetch_assoc($show_tab)) {
+        
+        echo "<h3>имена существующих таблиц в бд</h3>";
+        /*while($tables = mysqli_fetch_assoc($show_tab)) {
             print_r($tables);
             echo "<br>";
             echo "<br>";
-        }
+        }*/
     ?>
 </body>
 </html>

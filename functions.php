@@ -1,17 +1,24 @@
 <?php
-
-//узнать имена существующих бд
-function show_databases($link, $sql) {
+//функции для запроса к базе данных
+function request_one($link, $sql) {
     return mysqli_query($link, $sql);
 }
 
-//узнать таблицы бд
-function show_tables($link, $tab, $sql)  {
+function request_two($link, $tab, $sql)  {
     return mysqli_query($link, $sql);
 }
 
-//показать структуру таблицы
-function show_describe($link, $sql) {
-    return mysqli_query($link, $sql);
+function view($arr) {
+    while($tables = mysqli_fetch_assoc($arr)) {
+        print_r($tables);
+        echo "<br>";
+        echo "<br>";
+    }
+}
+
+function view2($arr) {
+    if($arr == "hello") {
+        echo "Hello Roman";
+    }
 }
 ?>
